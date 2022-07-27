@@ -71,9 +71,9 @@ function App() {
 
   return (
     <div className="App">
-      <div style={{ backgroundColor: "black" }}>
-        <p style={{ color: "white" }}>{currentStation.name}</p>
-        <ReactPlayer style={{ objectFit: "cover", opacity: "50%" }} width="100%" height="100%" playing={isPlaying} url={currentStation.url} />
+      <div style={{background:"rgba(0,0,0,0.6)",height:"100vh",width:"100vw"}}>
+        {/* <p style={{ color: "white" }}>{currentStation.name}</p> */}
+        <ReactPlayer style={{position:"relative",overflow:"hidden", objectFit: "cover", opacity: "100%",zIndex:"-1",bottom:"128px" }} width="1200px" height="125vh" playing={isPlaying} url={currentStation.url} />
       </div>
       <Stations stations={stations} setStations={setStations} />
       <Player stations={stations} currentStation={currentStation} setCurrentStation={setCurrentStation} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />

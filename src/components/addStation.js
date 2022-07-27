@@ -16,10 +16,10 @@ const AddStation = ({stations,setStations}) => {
     }
 
     return (
-        <form style={{display:"flex",alignItems: "center",justifyContent: "center",flexDirection: "column"}} onSubmit={handleSubmit}>
-            <input value={stationName} onChange={(e)=>setStationName(e.target.value)} type="text" placeholder="Add a New Station"/>
-            <button style={{position:"absolute",right:70}} type="submit"><Add fontSize="large" style={{color:"blue"}} /></button>
-            <input value={stationUrl} onChange={(e)=>setStationUrl(e.target.value)} type="text" placeholder="Add a New Station"/>
+        <form style={{display:"flex",justifyContent: "center",flexDirection: "column",width:"200px"}} onSubmit={handleSubmit}>
+            <input value={stationName} onChange={(e)=>setStationName(e.target.value)} type="text" placeholder="Station Name"/>
+            <button style={{position:"absolute",left:40,right:0}} type="submit"><Add fontSize="large" style={{color:"blue"}} /></button>
+            <input value={stationUrl} onChange={(e)=>setStationUrl(e.target.value)} type="text" placeholder="Station URL"/>
         </form>
     )
 }

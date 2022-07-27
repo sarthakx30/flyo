@@ -9,7 +9,7 @@ const Stations = ({ stations, setStations }) => {
     //     setStations(stations);
     // },[stations])
     return (
-        <div style={{ display: "flex", flexDirection: "column", width: "50%", margin: "0 auto" }}>
+        <div style={{ position:"absolute", left:20, top:150, display: "flex", flexDirection: "column", width: "50%",textAlign: "left"  }}>
             {stations.map((station, index) => (
                 <Station
                     station={station}

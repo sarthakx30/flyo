@@ -7,7 +7,7 @@ const Station = ({station,key,stations,setStations}) => {
             <p>{station.name}</p>
             <button onClick={() => {
                 setStations(stations.filter((el) => el!==station))
-            }}><DeleteOutlined style={{ position: "relative", left: "100px", bottom: "40px" }} /></button>
+            }}><DeleteOutlined style={{ position: "relative", bottom: "41px" }} /></button>
         </>
     )
 }
