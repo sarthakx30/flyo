@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PlayArrowOutlined, PauseOutlined, ArrowBackIosOutlined, ArrowForwardIosOutlined } from '@mui/icons-material';
 
 const Player = ({ isPlaying, setIsPlaying, currentStation, setCurrentStation, stations }) => {
+    const [buttonActive, setButtonActive] = useState(false);
     const handlePlay = () => {
         setIsPlaying(!isPlaying);
     }
@@ -29,13 +30,13 @@ const Player = ({ isPlaying, setIsPlaying, currentStation, setCurrentStation, st
     }
     return (
         <div className="player">
-            <button onClick={goBack}><ArrowBackIosOutlined /></button>
+            <button onClick={goBack}><ArrowBackIosOutlined className="icon" fontSize="large" /></button>
             <button onClick={handlePlay}>
                 {
-                    isPlaying ? <PauseOutlined /> : <PlayArrowOutlined />
+                    isPlaying ? <PauseOutlined className="icon"  fontSize="large"/> : <PlayArrowOutlined className="icon"  fontSize="large"/>
                 }
             </button>
-            <button onClick={goForward}><ArrowForwardIosOutlined /></button>
+            <button onClick={goForward}><ArrowForwardIosOutlined className="icon"  fontSize="large"/></button>
         </div>
     )
 }
