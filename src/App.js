@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useVisibilityChange } from 'use-visibility-change';
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Logo from "./images/Flio_Logo.PNG";
 import './App.css';
@@ -117,13 +118,14 @@ function App() {
     }
   }, [stations])
 
-  document.addEventListener('visibilitychange', function () {
-    // Pause video when page is hidden.
-    if (document.hidden) {
-      console.log('huhuh');
+  const onShow = () => {
+  }
+  const onHide = () => {
+    if (isPlaying === true) {
       setIsPlaying(true);
     }
-  });
+  }
+  useVisibilityChange({ onShow, onHide });
 
   const { innerWidth, innerHeight } = window;
   return (
