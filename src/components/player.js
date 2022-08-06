@@ -32,7 +32,7 @@ const Player = ({ volume, setVolume, isPlaying, setIsPlaying, currentStation, se
         <div className="player">
             <div>
                 <button onClick={goBack}><ArrowBackIosOutlined className="icon" fontSize="large" /></button>
-                <button onClick={handlePlay}>
+                <button style={{margin:"0px 20px"}} onClick={handlePlay}>
                     {
                         isPlaying ? <PauseOutlined className="icon" fontSize="large" /> : <PlayArrowOutlined className="icon" fontSize="large" />
                     }

@@ -116,7 +116,15 @@ function App() {
       localStorage.setItem('stations', JSON.stringify(stations));
     }
   }, [stations])
-  
+
+  document.addEventListener('visibilitychange', function () {
+    // Pause video when page is hidden.
+    if (document.hidden) {
+      console.log('huhuh');
+      setIsPlaying(true);
+    }
+  });
+
   const { innerWidth, innerHeight } = window;
   return (
     <div className="App">
