@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
 .App {
   text-align: center;
   overflow: hidden;
@@ -55,7 +58,7 @@
 .volumeBar input::-webkit-slider-thumb {
   -webkit-appearance: none;
   background-color: rgb(157, 202, 209);
-  filter: drop-shadow(0px 0px 5px rgb(0, 255, 234)) ;
+  filter: drop-shadow(0px 0px 5px rgb(0, 255, 234));
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -139,7 +142,7 @@ form input::placeholder {
 /* starting ENTER animation */
 .playingStation-enter {
   position: absolute;
-  right:20%;
+  right: 20%;
   opacity: 0%;
   color: white !important;
   filter: drop-shadow(0px) !important;
@@ -161,8 +164,8 @@ form input::placeholder {
   filter: drop-shadow(2px 2px 2px white) !important;
 }
 
-@media(max-width:800px){
-  .playingStation-enter-active{
+@media(max-width:800px) {
+  .playingStation-enter-active {
     transform: scale(70%) translateX(20%);
   }
 }
@@ -173,6 +176,7 @@ form input::placeholder {
   filter: drop-shadow(1px 2px 2px #47a0ee);
   transition: all 1000ms ease-in-out;
   white-space: nowrap;
+  font-family: 'Dancing Script', cursive;
   font-size: 35px;
 }
 
@@ -222,6 +226,7 @@ form input::placeholder {
   width: 250px;
   height: 500px;
   overflow: auto;
+  font-family: 'Kaushan Script', cursive;
 }
 
 .stations::-webkit-scrollbar {
@@ -251,11 +256,12 @@ form input::placeholder {
 } */
 
 @media(max-width:800px) {
-  .logoAnimation{
-    left:0px;
+  .logoAnimation {
+    left: 0px;
   }
-  .stations{
-    left:10px;
+
+  .stations {
+    left: 10px;
     height: 450px;
     width: 200px;
   }
