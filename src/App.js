@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Logo from "./images/Flio_Logo.PNG";
 import './App.css';
@@ -8,6 +8,7 @@ import Stations from './components/stations';
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(50);
   const [stations, setStations] = useState([
     {
       name: "Lofi Vibes",
@@ -38,8 +39,9 @@ function App() {
       url: 'https://www.youtube.com/watch?v=kgx4WGK0oNU&ab_channel=%E9%98%BF%E9%B2%8DAbao',
     }
   ])
+
   const [currentStation, setCurrentStation] = useState(stations[1]);
-  // const [songPlaying,setSonPlaying]=useState('highlight');
+
   //Getting Stations From Local Storage
   useEffect(() => {
     if (localStorage.getItem('stations')) {
@@ -77,10 +79,7 @@ function App() {
         }
       ]));
     }
-    // console.log(JSON.parse(localStorage.getItem('stations')));
-    // localStorage.setItem('stations', JSON.stringify(stations));
   }, [])
-
 
   //Writing Stations to Local Storage
   useEffect(() => {
@@ -116,15 +115,12 @@ function App() {
     ])) {
       localStorage.setItem('stations', JSON.stringify(stations));
     }
-    // console.log(JSON.parse(localStorage.getItem('stations')));
   }, [stations])
-
+  
   const { innerWidth, innerHeight } = window;
-  // console.log(innerWidth, innerHeight)
-
   return (
     <div className="App">
-      <img id="logo" className="logoAnimation" onLoad={()=>{document.getElementById("logo").classList.add('logoAnimation-active')}} src={Logo} />
+      <img id="logo" className="logoAnimation" onLoad={() => { document.getElementById("logo").classList.add('logoAnimation-active') }} src={Logo} />
       <div style={{ background: "rgba(0,0,0,0.6)", height: "100vh", width: "100vw" }}>
         <div style={{ overflow: "hidden" }}>
           <TransitionGroup
@@ -139,14 +135,14 @@ function App() {
             </CSSTransition>
           </TransitionGroup>
         </div>
-        {innerWidth > 750 ?
-          <ReactPlayer onReady={()=>{if(!isPlaying)setIsPlaying(true)}} style={{ position: "relative", overflow: "hidden", objectFit: "cover", opacity: "100%", zIndex: "-1", bottom: "135px", left: "-10%" }} width="140vw" height="145vh" playing={isPlaying} url={currentStation.url} />
+        {innerWidth > 700 ?
+          <ReactPlayer loop="true" volume={volume / 100} style={{ position: "relative", overflow: "hidden", objectFit: "cover", opacity: "100%", zIndex: "-1", bottom: "135px", left: "-10%" }} width="140vw" height="145vh" playing={isPlaying} url={currentStation.url} />
           :
-          <ReactPlayer style={{ position: "relative", overflow: "hidden", objectFit: "cover", opacity: "100%", zIndex: "-1", bottom: "80px", left: "-150%" }} width="1800px" height="1100px" playing={isPlaying} url={currentStation.url} />
+          <ReactPlayer loop="true" volume={volume / 100} style={{ position: "relative", overflow: "hidden", objectFit: "cover", opacity: "100%", zIndex: "-1", bottom: "80px", left: "-150%" }} width="1800px" height="1100px" playing={isPlaying} url={currentStation.url} />
         }
       </div>
       <Stations className="stations" currentStation={currentStation} setCurrentStation={setCurrentStation} stations={stations} setStations={setStations} />
-      <Player stations={stations} currentStation={currentStation} setCurrentStation={setCurrentStation} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
+      <Player volume={volume} setVolume={setVolume} stations={stations} currentStation={currentStation} setCurrentStation={setCurrentStation} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
     </div>
   );
 }

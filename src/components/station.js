@@ -7,16 +7,9 @@ const Station = ({currentStation, setCurrentStation, station, key, stations, set
         <div
             style={{ display: "flex" }}>
             <p
-                // style={{ color: "grey", "&:focus":{color:"white"} }}
                 className={active ? "active" : "notActive"}
                 onClick={() => {
                     setCurrentStation(station)
-                    // stations.map((el)=>{
-                    //     if(el===station){
-                    //         setActive(false)
-                    //     }
-                    // })
-                    // setActive(true)
                 }}
                 onMouseEnter={() => {
                     setActive(true);

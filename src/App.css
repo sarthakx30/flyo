@@ -4,8 +4,10 @@
   /* width: 100vw; */
 }
 
-.App::-webkit-scrollbar{
-  display: none;
+::-webkit-scrollbar {
+  display: auto;
+  width: 0px;
+  height: 0px;
 }
 
 .player {
@@ -13,10 +15,72 @@
   bottom: 50px;
   right: 0;
   left: 0;
-  width: 50%;
+  width: 70%;
   margin: 0 auto;
   background-color: rgba(0, 0, 0, 0);
   color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.volumeSection {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.volumeBar {
+  position: relative;
+  /* margin: 0 auto; */
+  width: 200px;
+  display: flex;
+  margin: 0px 10px 0px 10px;
+  /* height: 20px; */
+}
+
+.volumeBar input {
+  padding: 4px;
+  position: absolute;
+  width: 200px;
+  height: 15px;
+  -webkit-appearance: none;
+  background-color: transparent;
+  left: -6px;
+  top: -13px;
+  z-index: 99;
+}
+
+.volumeBar input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: rgb(157, 202, 209);
+  filter: drop-shadow(0px 0px 5px rgb(0, 255, 234)) ;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.volumeBar progress {
+  width: 200px;
+  height: 15px;
+  -webkit-appearance: none;
+  position: absolute;
+  top: -7px;
+  z-index: 98;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.volumeBar progress::-webkit-progress-bar {
+  background-color: #fff;
+}
+
+.volumeBar progress::-webkit-progress-value {
+  border-radius: 40px;
+  background-color: rgb(167, 227, 222);
 }
 
 button {
@@ -29,13 +93,20 @@ p {
   color: #fff;
 }
 
-input {
-  background: rgba(255, 255, 255, 1);
+form input {
+  background: rgba(128, 232, 246, 0.4);
   padding: 3px;
   border: none;
   border-radius: 10px;
   font-size: 14px;
   margin: 3px;
+  outline: none;
+  padding: 5px;
+  color: aliceblue;
+}
+
+form input::placeholder {
+  color: aliceblue;
 }
 
 .active {
@@ -67,11 +138,8 @@ input {
 
 /* starting ENTER animation */
 .playingStation-enter {
-  /* right: 50px; */
-  /* left: calc(13% + 5px);
-  right: calc(13% + 5px); */
   position: absolute;
-  right:30%;
+  right:20%;
   opacity: 0%;
   color: white !important;
   filter: drop-shadow(0px) !important;
@@ -88,14 +156,20 @@ input {
   white-space: nowrap;
   opacity: 0%;
   /* color: blue !important; */
-  transform: scale(70%) translateX(10%);
+  transform: scale(70%) translateX(40%);
   transition: all 2000ms ease-in-out;
   filter: drop-shadow(2px 2px 2px white) !important;
 }
 
+@media(max-width:800px){
+  .playingStation-enter-active{
+    transform: scale(70%) translateX(20%);
+  }
+}
+
 .playingStationText {
-  opacity:100%;
-  color:#99c5eb;
+  opacity: 100%;
+  color: #99c5eb;
   filter: drop-shadow(1px 2px 2px #47a0ee);
   transition: all 1000ms ease-in-out;
   white-space: nowrap;
@@ -128,26 +202,61 @@ input {
   position: absolute;
   top: -100px;
   left: 10px;
-  width:200px;
+  width: 200px;
   transition: all 2000ms ease-in-out;
-  opacity:0%;
+  opacity: 0%;
 }
 
-.logoAnimation-active{
-  opacity:100%;
-  top:40px;
+.logoAnimation-active {
+  opacity: 100%;
+  top: 40px;
 }
 
-.stations{
+.stations {
   position: absolute;
   top: 150px;
   left: 20px;
   transition: all 2000ms ease-in-out;
   /* opacity:0%; */
-  z-index: 1000;
+  z-index: 10;
+  width: 250px;
+  height: 500px;
+  overflow: auto;
 }
 
-.stations-active{
-  opacity:0%;
-  left:100px;
+.stations::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+.stations::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+.stations::-webkit-scrollbar-thumb {
+  background: rgb(0, 255, 234);
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+.stations::-webkit-scrollbar-thumb:hover {
+  background: #47a0ee;
+}
+
+/* .stations-active {
+  opacity: 0%;
+  left: 100px;
+} */
+
+@media(max-width:800px) {
+  .logoAnimation{
+    left:0px;
+  }
+  .stations{
+    left:10px;
+    height: 450px;
+    width: 200px;
+  }
 }
