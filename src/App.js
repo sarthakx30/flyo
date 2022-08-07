@@ -20,7 +20,7 @@ function App() {
       url: 'https://www.youtube.com/embed/jfKfPfyJRdk',
     },
     {
-      name: "SpongeBob Lofi",
+      name: "Relax 🍀",
       url: 'https://www.youtube.com/embed/d_t5nnK9Rn4',
     },
     {
@@ -32,12 +32,20 @@ function App() {
       url: 'https://www.youtube.com/watch?v=WDXPJWIgX-o&ab_channel=nostalgic',
     },
     {
-      name: "ＳＬＥＥＰＹ 💤",
+      name: "Sleepy 💤",
       url: 'https://www.youtube.com/watch?v=ff5lO8TkVX8&ab_channel=Musicchill',
     },
     {
       name: "Jazz Radio 🌱",
       url: 'https://www.youtube.com/watch?v=kgx4WGK0oNU&ab_channel=%E9%98%BF%E9%B2%8DAbao',
+    },
+    {
+      name:"Good Life 🌊",
+      url:"https://www.youtube.com/embed/36YnV9STBqc"
+    },
+    {
+      name:"Nature 💧",
+      url:"https://youtu.be/6oAdJjzXQS8"
     }
   ])
 
@@ -59,7 +67,7 @@ function App() {
           url: 'https://www.youtube.com/embed/jfKfPfyJRdk',
         },
         {
-          name: "SpongeBob Lofi",
+          name: "Relax 🍀",
           url: 'https://www.youtube.com/embed/d_t5nnK9Rn4',
         },
         {
@@ -71,12 +79,20 @@ function App() {
           url: 'https://www.youtube.com/watch?v=WDXPJWIgX-o&ab_channel=nostalgic',
         },
         {
-          name: "ＳＬＥＥＰＹ 💤",
+          name: "Sleepy 💤",
           url: 'https://www.youtube.com/watch?v=ff5lO8TkVX8&ab_channel=Musicchill',
         },
         {
           name: "Jazz Radio 🌱",
           url: 'https://www.youtube.com/watch?v=kgx4WGK0oNU&ab_channel=%E9%98%BF%E9%B2%8DAbao',
+        },
+        {
+          name:"Good Life 🌊",
+          url:"https://www.youtube.com/embed/36YnV9STBqc"
+        },
+        {
+          name:"Nature 💧",
+          url:"https://youtu.be/6oAdJjzXQS8"
         }
       ]));
     }
@@ -94,7 +110,7 @@ function App() {
         url: 'https://www.youtube.com/embed/jfKfPfyJRdk',
       },
       {
-        name: "SpongeBob Lofi",
+        name: "Relax 🍀",
         url: 'https://www.youtube.com/embed/d_t5nnK9Rn4',
       },
       {
@@ -106,12 +122,20 @@ function App() {
         url: 'https://www.youtube.com/watch?v=WDXPJWIgX-o&ab_channel=nostalgic',
       },
       {
-        name: "ＳＬＥＥＰＹ 💤",
+        name: "Sleepy 💤",
         url: 'https://www.youtube.com/watch?v=ff5lO8TkVX8&ab_channel=Musicchill',
       },
       {
         name: "Jazz Radio 🌱",
         url: 'https://www.youtube.com/watch?v=kgx4WGK0oNU&ab_channel=%E9%98%BF%E9%B2%8DAbao',
+      },
+      {
+        name:"Good Life 🌊",
+        url:"https://www.youtube.com/embed/36YnV9STBqc"
+      },
+      {
+        name:"Nature 💧",
+        url:"https://youtu.be/6oAdJjzXQS8"
       }
     ])) {
       localStorage.setItem('stations', JSON.stringify(stations));
