@@ -230,9 +230,17 @@ form input::placeholder {
 }
 
 .stations::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 3px;
+  height: 3px;
 }
+
+
+/* @media(max-width:800px){
+  .stations{
+    direction:rtl;
+    overflow:auto;
+  }
+} */
 
 /* Track */
 .stations::-webkit-scrollbar-track {
@@ -242,7 +250,7 @@ form input::placeholder {
 /* Handle */
 .stations::-webkit-scrollbar-thumb {
   background: rgb(0, 255, 234);
-  border-radius: 20px;
+  border-radius:20px;
 }
 
 /* Handle on hover */
@@ -254,6 +262,8 @@ form input::placeholder {
   opacity: 0%;
   left: 100px;
 } */
+
+
 
 @media(max-width:800px) {
   .logoAnimation {

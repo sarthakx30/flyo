@@ -20,7 +20,7 @@ const Station = ({currentStation, setCurrentStation, station, key, stations, set
             >{station.name}</p>
             <button onClick={() => {
                 setStations(stations.filter((el) => el !== station))
-            }}><DeleteOutlined style={{color:"rgb(167, 227, 222)",filter: "drop-shadow(0px 2px 2px rgb(0, 255,234)"}} /></button>
+            }}><DeleteOutlined style={{color:"rgb(167, 227, 222)",filter: "drop-shadow(0px 2px 2px rgb(0, 255,234)",marginLeft:"10px"}} /></button>
         </div>
     )
 }

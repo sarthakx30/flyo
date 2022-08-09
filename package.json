@@ -12,6 +12,7 @@
     "@types/react-transition-group": "^4.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-modern-drawer": "^1.1.2",
     "react-player": "^2.10.1",
     "react-scripts": "5.0.1",
     "use-visibility-change": "^0.5.0",

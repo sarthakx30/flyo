@@ -6,6 +6,7 @@ import './App.css';
 import Player from './components/player';
 import ReactPlayer from 'react-player';
 import Stations from './components/stations';
+import DrawerComponent from "./components/drawerComponent";
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -40,12 +41,12 @@ function App() {
       url: 'https://www.youtube.com/watch?v=kgx4WGK0oNU&ab_channel=%E9%98%BF%E9%B2%8DAbao',
     },
     {
-      name:"Good Life 🌊",
-      url:"https://www.youtube.com/embed/36YnV9STBqc"
+      name: "Good Life 🌊",
+      url: "https://www.youtube.com/embed/36YnV9STBqc"
     },
     {
-      name:"Nature 💧",
-      url:"https://youtu.be/6oAdJjzXQS8"
+      name: "Nature 💧",
+      url: "https://youtu.be/6oAdJjzXQS8"
     }
   ])
 
@@ -87,12 +88,12 @@ function App() {
           url: 'https://www.youtube.com/watch?v=kgx4WGK0oNU&ab_channel=%E9%98%BF%E9%B2%8DAbao',
         },
         {
-          name:"Good Life 🌊",
-          url:"https://www.youtube.com/embed/36YnV9STBqc"
+          name: "Good Life 🌊",
+          url: "https://www.youtube.com/embed/36YnV9STBqc"
         },
         {
-          name:"Nature 💧",
-          url:"https://youtu.be/6oAdJjzXQS8"
+          name: "Nature 💧",
+          url: "https://youtu.be/6oAdJjzXQS8"
         }
       ]));
     }
@@ -130,12 +131,12 @@ function App() {
         url: 'https://www.youtube.com/watch?v=kgx4WGK0oNU&ab_channel=%E9%98%BF%E9%B2%8DAbao',
       },
       {
-        name:"Good Life 🌊",
-        url:"https://www.youtube.com/embed/36YnV9STBqc"
+        name: "Good Life 🌊",
+        url: "https://www.youtube.com/embed/36YnV9STBqc"
       },
       {
-        name:"Nature 💧",
-        url:"https://youtu.be/6oAdJjzXQS8"
+        name: "Nature 💧",
+        url: "https://youtu.be/6oAdJjzXQS8"
       }
     ])) {
       localStorage.setItem('stations', JSON.stringify(stations));
@@ -152,6 +153,8 @@ function App() {
   useVisibilityChange({ onShow, onHide });
 
   const { innerWidth, innerHeight } = window;
+
+
   return (
     <div className="App">
       <img id="logo" className="logoAnimation" onLoad={() => { document.getElementById("logo").classList.add('logoAnimation-active') }} src={Logo} />
@@ -170,12 +173,23 @@ function App() {
           </TransitionGroup>
         </div>
         {innerWidth > 700 ?
-          <ReactPlayer loop="true" volume={volume / 100} style={{ position: "relative", overflow: "hidden", objectFit: "cover", opacity: "100%", zIndex: "-1", bottom: "135px", left: "-10%" }} width="140vw" height="145vh" playing={isPlaying} url={currentStation.url} />
+          <>
+            <a href="https://www.buymeacoffee.com/sarthak30" target="_blank">
+              <img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style={{ height: "50px", width: "200px", position: "absolute", bottom: "20px", right: "20px" }} />
+            </a>
+            <ReactPlayer loop="true" volume={volume / 100} style={{ position: "relative", overflow: "hidden", objectFit: "cover", opacity: "100%", zIndex: "-1", bottom: "135px", left: "-10%" }} width="140vw" height="145vh" playing={isPlaying} url={currentStation.url} />
+            <Stations className="stations" currentStation={currentStation} setCurrentStation={setCurrentStation} stations={stations} setStations={setStations} />
+          </>
           :
-          <ReactPlayer loop="true" volume={volume / 100} style={{ position: "relative", overflow: "hidden", objectFit: "cover", opacity: "100%", zIndex: "-1", bottom: "80px", left: "-150%" }} width="1800px" height="1100px" playing={isPlaying} url={currentStation.url} />
+          <>
+            <a href="https://www.buymeacoffee.com/sarthak30" target="_blank">
+              <img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style={{ height: "40px", width: "150px", position: "absolute", bottom: "10px", right: "20px" }} />
+            </a>
+            <ReactPlayer loop="true" volume={volume / 100} style={{ position: "relative", overflow: "hidden", objectFit: "cover", opacity: "100%", zIndex: "-1", bottom: "80px", left: "-150%" }} width="1800px" height="1100px" playing={isPlaying} url={currentStation.url} />
+            <DrawerComponent currentStation={currentStation} setCurrentStation={setCurrentStation} stations={stations} setStations={setStations} />
+          </>
         }
       </div>
-      <Stations className="stations" currentStation={currentStation} setCurrentStation={setCurrentStation} stations={stations} setStations={setStations} />
       <Player volume={volume} setVolume={setVolume} stations={stations} currentStation={currentStation} setCurrentStation={setCurrentStation} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
     </div>
   );
