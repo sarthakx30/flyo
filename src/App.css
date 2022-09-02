@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,200&display=swap');
+
 
 .App {
   text-align: center;
@@ -234,14 +236,6 @@ form input::placeholder {
   height: 3px;
 }
 
-
-/* @media(max-width:800px){
-  .stations{
-    direction:rtl;
-    overflow:auto;
-  }
-} */
-
 /* Track */
 .stations::-webkit-scrollbar-track {
   background: transparent;
@@ -250,7 +244,7 @@ form input::placeholder {
 /* Handle */
 .stations::-webkit-scrollbar-thumb {
   background: rgb(0, 255, 234);
-  border-radius:20px;
+  border-radius: 20px;
 }
 
 /* Handle on hover */
@@ -274,5 +268,61 @@ form input::placeholder {
     left: 10px;
     height: 450px;
     width: 200px;
+  }
+}
+
+
+.timer {
+  width: 300px;
+  height: 300px;
+  background: -webkit-linear-gradient(left, skyBlue 50%, white 50%);
+  position: relative;
+  border-radius: 50%;
+  border:45px solid white;
+  animation-name:time;
+  animation-duration:5s;
+  animation-iteration-count: infinite;
+  animation-timing-function:steps(1000,start);
+  -webkit-mask: radial-gradient(transparent 50%, #000 50%);
+  mask: radial-gradient(transparent 50%, #000 50%);
+  animation-play-state: paused;
+}
+
+.mask {
+  border-radius: 100% 0 0 100% / 50% 0 0 50%;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 50%;
+  animation-name: mask;
+  animation-duration: 5s;
+  animation-timing-function: steps(1000, start);
+  animation-iteration-count: infinite;
+  transform-origin: 100% 50%;
+  animation-play-state: paused;
+}
+
+@keyframes time {
+  100% {
+      transform: rotate(360deg);
+  }
+}
+@keyframes mask {
+  0% {
+      background: white;
+      transform: rotate(0deg);
+  }
+  50% {
+      background: white;
+      transform: rotate(-180deg);
+  }
+  50.01% {
+      background: skyBlue;
+      transform: rotate(0deg);
+  }
+  100% {
+      background: skyBlue;
+      transform: rotate(-180deg);
   }
 }

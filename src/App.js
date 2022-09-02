@@ -7,8 +7,12 @@ import Player from './components/player';
 import ReactPlayer from 'react-player';
 import Stations from './components/stations';
 import DrawerComponent from "./components/drawerComponent";
+import Timer from "./components/timer";
+import { CancelRounded } from '@mui/icons-material';
 
 function App() {
+  const [firstUse, setFirstUse] = useState(false);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
   const [stations, setStations] = useState([
@@ -47,6 +51,10 @@ function App() {
     {
       name: "Nature 💧",
       url: "https://youtu.be/6oAdJjzXQS8"
+    },
+    {
+      name: 'Focus 🌛',
+      url: 'https://youtu.be/Jf7UIivyr9s'
     }
   ])
 
@@ -58,6 +66,7 @@ function App() {
       setStations(JSON.parse(localStorage.getItem('stations')));
     }
     else {
+      setFirstUse(true);
       localStorage.setItem('stations', JSON.stringify([
         {
           name: "Lofi Vibes",
@@ -94,6 +103,10 @@ function App() {
         {
           name: "Nature 💧",
           url: "https://youtu.be/6oAdJjzXQS8"
+        },
+        {
+          name: 'Focus 🌛',
+          url: 'https://youtu.be/Jf7UIivyr9s'
         }
       ]));
     }
@@ -137,6 +150,10 @@ function App() {
       {
         name: "Nature 💧",
         url: "https://youtu.be/6oAdJjzXQS8"
+      },
+      {
+        name: 'Focus 🌛',
+        url: 'https://youtu.be/Jf7UIivyr9s'
       }
     ])) {
       localStorage.setItem('stations', JSON.stringify(stations));
@@ -177,20 +194,61 @@ function App() {
             <a href="https://www.buymeacoffee.com/sarthak30" target="_blank">
               <img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style={{ height: "50px", width: "200px", position: "absolute", bottom: "20px", right: "20px" }} />
             </a>
-            <ReactPlayer loop="true" volume={volume / 100} style={{ position: "relative", overflow: "hidden", objectFit: "cover", opacity: "100%", zIndex: "-1", bottom: "135px", left: "-10%" }} width="140vw" height="145vh" playing={isPlaying} url={currentStation.url} />
+            <ReactPlayer loop={true} volume={volume / 100} style={{ position: "relative", overflow: "hidden", objectFit: "cover", opacity: "100%", zIndex: "-1", bottom: "135px", left: "-10%" }} width="140vw" height="145vh" playing={isPlaying} url={currentStation.url} />
             <Stations className="stations" currentStation={currentStation} setCurrentStation={setCurrentStation} stations={stations} setStations={setStations} />
+            <Timer style={{position: 'absolute',top: 100,right: 50}}/>
           </>
           :
           <>
             <a href="https://www.buymeacoffee.com/sarthak30" target="_blank">
               <img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style={{ height: "40px", width: "150px", position: "absolute", bottom: "10px", right: "20px" }} />
             </a>
-            <ReactPlayer loop="true" volume={volume / 100} style={{ position: "relative", overflow: "hidden", objectFit: "cover", opacity: "100%", zIndex: "-1", bottom: "80px", left: "-150%" }} width="1800px" height="1100px" playing={isPlaying} url={currentStation.url} />
+            <ReactPlayer loop={true} volume={volume / 100} style={{ position: "relative", overflow: "hidden", objectFit: "cover", opacity: "100%", zIndex: "-1", bottom: "80px", left: "-150%" }} width="1800px" height="1100px" playing={isPlaying} url={currentStation.url} />
             <DrawerComponent currentStation={currentStation} setCurrentStation={setCurrentStation} stations={stations} setStations={setStations} />
+            <Timer style={{}}/>
           </>
         }
       </div>
       <Player volume={volume} setVolume={setVolume} stations={stations} currentStation={currentStation} setCurrentStation={setCurrentStation} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
+      {firstUse ?
+        <div style={{
+          textAlign: 'justify',
+          textJustify: 'inter-word',
+          padding: '0px 20px',
+          fontFamily: "'Source Code Pro', monospace",
+          position: 'absolute',
+          width: '250px',
+          margin: '0 auto',
+          top: '35%',
+          left: 0,
+          right: 0,
+          border: '2px solid cyan',
+          background: 'rgba(0,0,0,0.4)'
+        }}>
+          <p style={{
+            color: 'rgb(167, 227, 222)',
+            filter: 'drop-shadow(1px 1px 2px rgb(0, 255, 234))'
+          }}>
+            Welcome to Flio. A Music Player built to help you concentrate and stay focused on your work while listening to our curated selection of Stations in the background, or add your own to the playlist while using the Podomoro Timer.
+          </p>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setFirstUse(false);
+            }
+            }
+            style={{
+              position: 'absolute',
+              top: "-20px",
+              right: '-25px',
+            }}>
+            <CancelRounded fontSize="large" style={{
+              color: 'rgb(200, 20, 50)',
+              filter: 'drop-shadow(0px 0px 3px rgb(200, 20, 50))'
+            }} />
+          </button>
+        </div>
+        : <></>}
     </div>
   );
 }
